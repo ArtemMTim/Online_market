@@ -1,0 +1,91 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "title": "Молочные продукты",
+        "description": "Продукты из самого свежего молока"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "title": "Мясные продукты",
+        "description": "Продукты из самого свежего мяса"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "title": "Хлебобулочные изделия",
+        "description": "Самые вкусные булочки"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "title": "Сушки",
+        "description": "Свежие сушки",
+        "image": "",
+        "category": 3,
+        "price": 65.0,
+        "created_at": "2024-10-01",
+        "updated_at": "2024-10-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "title": "Плюшка московская",
+        "description": "Свежие плюшка",
+        "image": "",
+        "category": 3,
+        "price": 25.0,
+        "created_at": "2024-10-01",
+        "updated_at": "2024-10-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "title": "Бекон",
+        "description": "Свежий бекон",
+        "image": "",
+        "category": 2,
+        "price": 125.0,
+        "created_at": "2024-10-01",
+        "updated_at": "2024-10-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "title": "Кефир",
+        "description": "Кефир 15%",
+        "image": "",
+        "category": 1,
+        "price": 55.0,
+        "created_at": "2024-10-01",
+        "updated_at": "2024-10-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "title": "Йогурт",
+        "description": "Йогурт со вкусом клубники",
+        "image": "",
+        "category": 1,
+        "price": 85.0,
+        "created_at": "2024-10-01",
+        "updated_at": "2024-10-01"
+    }
+}
+]
