@@ -1,5 +1,5 @@
 {% extends 'base_template.html' %}
-
+{% load my_tags %}
 {% block title %}Главная страница магазина{% endblock %}
 
 {% block content %}
@@ -19,7 +19,10 @@
                         <li>- Категория продукта: {{ product.category }}</li>
                         <li>- Описание продукта: {{ product.description | truncatechars:100 }}</li>
                     </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</button>
+                    <div class="btn-group">
+                        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_details' product.pk %}" role="button">Подробнее</a>
+                    </div>
+
                 </div>
             </div>
         </div>
