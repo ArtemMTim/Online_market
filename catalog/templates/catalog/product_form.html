@@ -1,0 +1,17 @@
+{% extends 'catalog/base_template.html' %}
+{% load my_tags %}
+{% block title %}Добавление продукта{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+        <h1 class="mb-4">Форма добавление продукта</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+
+{% endblock %}
