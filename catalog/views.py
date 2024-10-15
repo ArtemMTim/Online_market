@@ -31,7 +31,7 @@ class ProductCreateView(CreateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'catalog/product_confirm_delete.html'
+    template_name = 'catalog/post_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
 
 class ProductUpdateView(UpdateView):
