@@ -1,17 +1,23 @@
 from django.urls import path
 
 from blog.apps import BlogConfig
-from blog.views import PostListView, PostDetailView, PostCreateView, ContactsView, PostDeleteView, PostUpdateView
+from blog.views import (
+    ContactsView,
+    PostCreateView,
+    PostDeleteView,
+    PostDetailView,
+    PostListView,
+    PostUpdateView,
+)
 
 app_name = BlogConfig.name
 
 
 urlpatterns = [
-    path("post/", PostListView.as_view(), name="post_list"),
-    path("contacts/", ContactsView.as_view(), name="contacts"),
-    path("post/<int:pk>/", PostDetailView.as_view(), name="post_detail"),
-    path("post/create/", PostCreateView.as_view(), name="post_create"),
-    path("post/<int:pk>/update/", PostUpdateView.as_view(), name="post_update"),
-    path("post/<int:pk>/delete/", PostDeleteView.as_view(), name="post_delete"),
-
+    path("blogs/", PostListView.as_view(), name="post_list"),
+    path("blogs/contacts/", ContactsView.as_view(), name="contacts"),
+    path("blogs/<int:pk>/", PostDetailView.as_view(), name="post_detail"),
+    path("blogs/create/", PostCreateView.as_view(), name="post_create"),
+    path("blogs/<int:pk>/update/", PostUpdateView.as_view(), name="post_update"),
+    path("blogs/<int:pk>/delete/", PostDeleteView.as_view(), name="post_delete"),
 ]

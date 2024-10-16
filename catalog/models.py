@@ -44,7 +44,9 @@ class Product(models.Model):
         related_name="products",
         verbose_name="Категория",
     )
-    view_counter = models.PositiveIntegerField(default=0, verbose_name="Количество просмотров")
+    view_counter = models.PositiveIntegerField(
+        default=0, verbose_name="Количество просмотров"
+    )
     price = models.FloatField(verbose_name="Цена", help_text="Введите цену продукта")
     created_at = models.DateField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateField(auto_now=True, verbose_name="Дата изменения")
