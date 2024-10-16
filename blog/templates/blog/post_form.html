@@ -5,7 +5,13 @@
 {% block content %}
 
 <div class="container mt-5">
-        <h1 class="mb-4">Форма добавление поста</h1>
+        <h1 class="mb-4">
+            {% if post %}
+            Форма изменения поста
+            {% else %}
+            Форма создания поста
+            {% endif %}
+            </h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
