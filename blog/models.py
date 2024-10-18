@@ -5,6 +5,9 @@ class Post(models.Model):
     title = models.CharField(
         max_length=150, verbose_name="Заголовок", help_text="Введите название"
     )
+    slug = models.SlugField(
+        max_length=255, unique=True, db_index=True, verbose_name="Слаг"
+    )
     text = models.TextField(
         verbose_name="Текст поста",
         blank=True,
