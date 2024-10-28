@@ -18,7 +18,6 @@ class ProductDetailView(DetailView):
     model = Product
 
     def get_object(self, queryset=None):
-        # Update view counter
         self.object = super().get_object(queryset)
         self.object.view_counter += 1
         self.object.save()
@@ -28,7 +27,6 @@ class ProductDetailView(DetailView):
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
-    #fields = ("title", "description", "price", "image", "category")
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy("catalog:product_list")
 
@@ -42,7 +40,6 @@ class ProductDeleteView(DeleteView):
 class ProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
-    #fields = ("title", "description", "price", "image", "category")
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy("catalog:product_list")
 
