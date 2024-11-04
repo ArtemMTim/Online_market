@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .forms import ProductForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Product
 
@@ -14,8 +15,9 @@ class ContactsView(TemplateView):
     template_name = "catalog/contacts.html"
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
+    login_url = reverse_lazy("users:login")
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -24,11 +26,12 @@ class ProductDetailView(DetailView):
         return self.object
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy("catalog:product_list")
+    login_url = reverse_lazy("users:login")
 
 
 class ProductDeleteView(DeleteView):
@@ -37,11 +40,12 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy("catalog:product_list")
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy("catalog:product_list")
+    login_url = reverse_lazy("users:login")
 
     def get_success_url(self):
         return reverse_lazy("catalog:product_detail", kwargs={"pk": self.object.pk})
