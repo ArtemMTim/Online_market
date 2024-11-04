@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-
+from .forms import PostForm
 from .models import Post
 
 
@@ -29,7 +29,9 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
-    fields = ("title", "text", "image", "published")
+    form_class = PostForm
+    template_name = "blog/post_form.html"
+    # fields = ("title", "text", "image", "published")
     success_url = reverse_lazy("blog:post_list")
 
 
@@ -41,7 +43,9 @@ class PostDeleteView(DeleteView):
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ("title", "text", "image", "published")
+    form_class = PostForm
+    template_name = "blog/post_form.html"
+    # fields = ("title", "text", "image", "published")
     success_url = reverse_lazy("blog:post_list")
 
     def get_success_url(self):
