@@ -1,6 +1,7 @@
 from django import forms
-from .models import Product
 from django.core.exceptions import ValidationError
+
+from .models import Product
 
 STOP_WORDS = [
     "казино",
