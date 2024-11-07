@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-        {% for product in object_list %}
+        {% for product in published_products %}
         <div class="col">
           <div class="card shadow-sm">
               <div class="card-header">
@@ -24,7 +24,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_detail' product.pk %}" role="button">Подробнее</a>
+                    {% if perms.products.delete_product or self.request.user == product.owner%}
                     <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_update' product.pk %}" role="button">Изменить</a>
+                    {% endif %}
                 </div>
               </div>
             </div>
