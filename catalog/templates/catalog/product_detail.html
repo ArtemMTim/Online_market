@@ -22,10 +22,19 @@
                     <div class="btn-group mt-3">
                         <a class="btn btn-lg btn-block btn-primary" href="#" role="button">Купить</a>
                     </div>
+                  <div class="btn-group mt-3">
+                      <form action = "{% url 'catalog:unpublish_product' product.pk %}" method="post">
+                          {% csrf_token %}
+                          <button class="btn btn-lg btn-block btn-primary" role="button" type="submit">Снять продукт с публикации</button>
+
+                      </form>
+                    </div>
+                  {% if perms.products.delete_product or self.request.user == product.owner%}
 
                     <div class="btn-group mt-3">
                         <a class="btn btn-lg btn-block btn-danger" href="{% url 'catalog:product_delete' product.pk %}" role="button">Удалить</a>
                     </div>
+                  {% endif %}
                     <div class="btn-group mt-3">
                         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
                     </div>

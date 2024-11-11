@@ -15,9 +15,11 @@ class ProductAdmin(admin.ModelAdmin):
         "id",
         "title",
         "category",
+        "owner",
         "price",
         "image",
         "view_counter",
+        "publish_status",
     )
     list_filter = ("category",)
     search_fields = ("title", "description")

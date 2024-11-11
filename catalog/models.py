@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Category(models.Model):
     title = models.CharField(
@@ -44,6 +46,19 @@ class Product(models.Model):
         related_name="products",
         verbose_name="Категория",
     )
+    publish_status = models.BooleanField(
+        default=False,
+        help_text="Укажите статус публикации продукта",
+        verbose_name="Статус публикации",
+    )
+    owner = models.ForeignKey(
+        User,
+        verbose_name="Владелец",
+        on_delete=models.CASCADE,
+        related_name="products",
+        null=True,
+        blank=True,
+    )
     view_counter = models.PositiveIntegerField(
         default=0, verbose_name="Количество просмотров"
     )
@@ -58,6 +73,9 @@ class Product(models.Model):
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["title"]
+        permissions = [
+            ("can_unpublish_product", "can unpublish product"),
+        ]
 
 
 # Create your models here.
