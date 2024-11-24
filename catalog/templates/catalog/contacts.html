@@ -32,21 +32,24 @@
                     <h4 class="my-0 font-weight-normal">Свяжитесь с нами</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="" class="form-floating">
+                    <form action="" class="form-floating" method="post">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="name">Имя</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
+                            <input class="form-control" id="name" name="name" placeholder="Ваше имя" required
+                                   type="text">
                         </div>
                         <div class="mb-3">
                             <label for="phone">Телефон</label>
-                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Контактный телефон" required>
+                            <input class="form-control" id="phone" name="phone" placeholder="Контактный телефон"
+                                   required type="text">
                         </div>
                         <div class="mb-3">
                             <label for="message">Сообщение</label>
-                            <textarea type="text" name="message" class="form-control" id="message" placeholder="Ваше сообщение" required></textarea>
+                            <textarea class="form-control" id="message" name="message" placeholder="Ваше сообщение"
+                                      required type="text"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить</button>
+                        <button class="btn btn-lg btn-block btn-outline-primary" type="submit">Отправить</button>
                     </form>
                 </div>
             </div>

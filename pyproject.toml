@@ -13,6 +13,7 @@ python-dotenv = "^1.0.1"
 pillow = "^10.4.0"
 ipython = "^8.27.0"
 redis = "^5.2.0"
+beautify = "^0.1.4"
 
 
 [tool.poetry.group.lint.dependencies]

@@ -7,41 +7,45 @@
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <div class="col">
-          <div class="card shadow-sm">
-              <div class="card-header">
-                  <h4 class="my-0 font-weight-normal text-center">{{ object.title }}</h4>
-              </div>
-              <img src="{{ product.image | media_filter }}" width="100%" height="250">
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">{{ object.price }} рублей</h1>
-                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                    <li>- Категория продукта: {{ object.category }}</li>
-                    <li>- Описание продукта: {{ object.description }}</li>
-                </ul>
-              <div class="row">
-                    <div class="btn-group mt-3">
-                        <a class="btn btn-lg btn-block btn-primary" href="#" role="button">Купить</a>
-                    </div>
-                  <div class="btn-group mt-3">
-                      <form action = "{% url 'catalog:unpublish_product' product.pk %}" method="post">
-                          {% csrf_token %}
-                          <button class="btn btn-lg btn-block btn-primary" role="button" type="submit">Снять продукт с публикации</button>
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal text-center">{{ object.title }}</h4>
+                </div>
+                <img height="250" src="{{ product.image | media_filter }}" width="100%">
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{ object.price }} рублей</h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>- Категория продукта: {{ object.category }}</li>
+                        <li>- Описание продукта: {{ object.description }}</li>
+                    </ul>
+                    <div class="row">
+                        <div class="btn-group mt-3">
+                            <a class="btn btn-lg btn-block btn-primary" href="#" role="button">Купить</a>
+                        </div>
+                        <div class="btn-group mt-3">
+                            <form action="{% url 'catalog:unpublish_product' product.pk %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-lg btn-block btn-primary" role="button" type="submit">Снять
+                                    продукт с публикации
+                                </button>
 
-                      </form>
-                    </div>
-                  {% if perms.products.delete_product or self.request.user == product.owner%}
+                            </form>
+                        </div>
+                        {% if perms.products.delete_product or self.request.user == product.owner%}
 
-                    <div class="btn-group mt-3">
-                        <a class="btn btn-lg btn-block btn-danger" href="{% url 'catalog:product_delete' product.pk %}" role="button">Удалить</a>
-                    </div>
-                  {% endif %}
-                    <div class="btn-group mt-3">
-                        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
-                    </div>
+                        <div class="btn-group mt-3">
+                            <a class="btn btn-lg btn-block btn-danger"
+                               href="{% url 'catalog:product_delete' product.pk %}" role="button">Удалить</a>
+                        </div>
+                        {% endif %}
+                        <div class="btn-group mt-3">
+                            <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_list' %}"
+                               role="button">Назад</a>
+                        </div>
 
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
     </div>
 </div>
